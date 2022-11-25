@@ -1,0 +1,130 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+:root {
+  --border-color: #c3c3c3;
+
+  --primary-color: rgb(0, 128, 255);
+  --box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.25);
+  --cards-gap: 1rem;
+  --card-border-width: 1px;
+  --line-spacing: 25rem;
+  --default-card-border: var(--card-border-width) solid var(--border-color);
+  --default-card-border-radius: 0.5rem;
+
+  --grid-gap: 1rem;
+  --avatar-size: 50px;
+  --section-header-margin: 1.75rem;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+section {
+  margin: 2rem 0;
+}
+
+.timeline {
+  display: grid;
+  grid-template-columns: var(--avatar-size) 1fr;
+  gap: var(--grid-gap);
+  padding: 0 1rem;
+  max-width: 50em;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.avatar {
+  position: relative;
+}
+
+.avatar::after {
+  content: "";
+  position: absolute;
+  margin: 0 auto;
+  width: 1px;
+  background-color: #c3c3c3;
+
+  left: 0;
+  right: 0;
+  top: var(--avatar-size);
+  bottom: calc(var(--grid-gap) * -1);
+  z-index: -1;
+}
+
+.avatar:first-child::before {
+  content: "";
+  position: absolute;
+  margin: 0 auto;
+  width: 1px;
+  background-color: #c3c3c3;
+
+  left: 0;
+  right: 0;
+  top: calc(var(--section-header-margin) * -1);
+  bottom: 100%;
+  z-index: -1;
+}
+
+.avatar > img {
+  width: 100%;
+  border-radius: 100%;
+  border: 3px solid white;
+  display: block;
+  object-fit: cover;
+}
+
+.avatar:nth-last-child(2)::after {
+  display: none;
+}
+
+.card {
+  max-width: 40rem;
+  padding: 1rem 1.5rem;
+  border: var(--default-card-border);
+  border-radius: var(--default-card-border-radius);
+  box-shadow: var(--box-shadow);
+  position: relative;
+  cursor: pointer;
+}
+
+.card .header {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+
+  display: flex;
+  gap: 0.5rem;
+}
+
+.card .header .card-title {
+  flex: 1;
+}
+
+.card .body {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background-color: #efefef;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.section-header {
+  display: flex;
+  font-size: 1.25rem;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.5rem;
+  margin-bottom: var(--section-header-margin);
+}
+
+.date {
+  color: var(--border-color);
+}
